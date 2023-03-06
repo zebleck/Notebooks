@@ -182,10 +182,10 @@ axs1a[2].set_ylim(26.5+cte,-.5)
 axs1a[2].set_xlabel('$[W_{out}]_z$')
 axs1a[2].grid()
 
-plt.savefig('predict-lorenz-wout.png', bbox_inches='tight')
-plt.savefig('predict-lorenz-wout.svg', bbox_inches='tight')
-plt.savefig('predict-lorenz-wout.eps', bbox_inches='tight')
-plt.savefig('predict-lorenz-wout.pdf', bbox_inches='tight')
+plt.savefig('figures/predict-lorenz-wout.png', bbox_inches='tight')
+plt.savefig('figures/predict-lorenz-wout.svg', bbox_inches='tight')
+plt.savefig('figures/predict-lorenz-wout.eps', bbox_inches='tight')
+plt.savefig('figures/predict-lorenz-wout.pdf', bbox_inches='tight')
 
 ##### zoom in ####
 
@@ -220,7 +220,7 @@ axs1b[2].set_xticks([-0.05,0.,.05])
 axs1b[2].set_xlabel('$[W_{out}]_z$')
 axs1b[2].grid()
 
-plt.savefig('predict-lorenz-wout-zoom.png', bbox_inches='tight')
-plt.savefig('predict-lorenz-wout-zoom.svg', bbox_inches='tight')
-plt.savefig('predict-lorenz-wout-zoom.eps', bbox_inches='tight')
-plt.savefig('predict-lorenz-wout-zoom.pdf', bbox_inches='tight')
+plt.savefig('figures/predict-lorenz-wout-zoom.png', bbox_inches='tight')
+plt.savefig('figures/predict-lorenz-wout-zoom.svg', bbox_inches='tight')
+plt.savefig('figures/predict-lorenz-wout-zoom.eps', bbox_inches='tight')
+plt.savefig('figures/predict-lorenz-wout-zoom.pdf', bbox_inches='tight')
