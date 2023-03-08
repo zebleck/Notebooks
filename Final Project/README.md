@@ -1,1 +1,1 @@
-Test123
+This folder was created for the final project of the lecture *Dynamical Systems Theory in machine learning*. The bulk of the project can be found in the LEM-main folder, in which the Long Expressive Memory neural network architecture was used to reconstruct the Lorenz63 and Lorenz96 dynamical system.
