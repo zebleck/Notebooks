@@ -1,0 +1,1 @@
+Namespace(batch=32, device=device(type='cuda'), epochs=100, lorenz_type='lorenz96', lr=0.0001, model_path='models/lorenz96/6/model.pt', nhid=150, ninp=20, seed=1234, seq_len=5, stride=5)

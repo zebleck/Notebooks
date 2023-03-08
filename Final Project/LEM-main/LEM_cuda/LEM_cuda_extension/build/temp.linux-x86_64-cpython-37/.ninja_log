@@ -1,0 +1,3 @@
+# ninja log v5
+4	19633	1678149160193450000	/mnt/c/Users/Kontor/Github Repos/Notebooks/LEM-main/LEM_cuda/LEM_cuda_extension/build/temp.linux-x86_64-cpython-37/lem_cuda.o	c67504798bea28ca
+4	35484	1678149176048663400	/mnt/c/Users/Kontor/Github Repos/Notebooks/LEM-main/LEM_cuda/LEM_cuda_extension/build/temp.linux-x86_64-cpython-37/lem_cuda_kernel.o	4fb248d5ffb7c6ee
