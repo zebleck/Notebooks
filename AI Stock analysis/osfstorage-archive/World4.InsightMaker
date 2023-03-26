@@ -1,0 +1,947 @@
+<InsightMakerModel>
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <Display name="Humans" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="" ThreeDimensional="false" Primitives="101" AutoAddPrimitives="true" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" yAxis2="" Primitives2="" showMarkers="false" showLines="true" showArea="false" legendPosition="None" xAxisMin="1900" xAxisMax="2100" yAxisMax="10000000000" id="3">
+      <mxCell style="roundImage;image=/builder/images/DisplayFull.png;" parent="1" vertex="1" visible="0">
+        <mxGeometry x="50" y="20" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+    <Display name="Technology" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="" yAxis2="" showMarkers="false" showLines="true" showArea="false" ThreeDimensional="false" Primitives="227" Primitives2="137" AutoAddPrimitives="false" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" legendPosition="Automatic" xAxisMin="1700" xAxisMax="2500" id="83">
+      <mxCell style="display" parent="1" vertex="1" visible="0">
+        <mxGeometry x="10" y="10" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+    <Folder name="What-If" Note="" Type="None" Solver="{&quot;enabled&quot;: false, &quot;algorithm&quot;: &quot;RK1&quot;, &quot;timeStep&quot;: 1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="257" id="257">
+      <mxCell style="folder;fontSize=10;fontStyle=4;fontColor=#339966;fillColor=none;" parent="1" vertex="1">
+        <mxGeometry x="619" y="424" width="91" height="266" as="geometry" />
+      </mxCell>
+    </Folder>
+    <Folder name="Intrinsic growth rates" Note="" Type="None" Solver="{&quot;enabled&quot;: false, &quot;algorithm&quot;: &quot;RK1&quot;, &quot;timeStep&quot;: 1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="255" id="255">
+      <mxCell style="folder;fontSize=10;fontStyle=4" parent="1" vertex="1">
+        <mxGeometry x="410" y="424" width="200" height="70" as="geometry" />
+      </mxCell>
+    </Folder>
+    <Folder name="Stock initial values" Note="" Type="None" Solver="{&quot;enabled&quot;: false, &quot;algorithm&quot;: &quot;RK1&quot;, &quot;timeStep&quot;: 1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="254" id="254">
+      <mxCell style="folder;fontSize=10;fontStyle=4" parent="1" vertex="1">
+        <mxGeometry x="300" y="420" width="100" height="270" as="geometry" />
+      </mxCell>
+    </Folder>
+    <Folder name="Footprint parameters" Note="" Type="None" Solver="{&quot;enabled&quot;: false, &quot;algorithm&quot;: &quot;RK1&quot;, &quot;timeStep&quot;: 1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="256" id="256">
+      <mxCell style="folder;fontSize=10;fontStyle=4" parent="1" vertex="1">
+        <mxGeometry x="414" y="501.75" width="90" height="188.25" as="geometry" />
+      </mxCell>
+    </Folder>
+    <Folder name="Feedback   controls" Note="" Type="None" Solver="{&quot;enabled&quot;: false, &quot;algorithm&quot;: &quot;RK1&quot;, &quot;timeStep&quot;: 1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" oldId="253" id="253">
+      <mxCell style="folder;fontSize=12;fontStyle=4" parent="1" vertex="1">
+        <mxGeometry x="520" y="500" width="90" height="190" as="geometry" />
+      </mxCell>
+    </Folder>
+    <Display name="logHumans" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="" yAxis2="" showMarkers="false" showLines="true" showArea="false" ThreeDimensional="false" Primitives="89,110" Primitives2="" AutoAddPrimitives="false" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" legendPosition="Automatic" xAxisMin="1" xAxisMax="2500" id="97">
+      <mxCell style="display" parent="1" vertex="1" visible="0">
+        <mxGeometry x="10" y="10" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+    <Folder name="Environment" Note="" Type="None" Solver="{&quot;enabled&quot;: false, &quot;algorithm&quot;: &quot;RK1&quot;, &quot;timeStep&quot;: 1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" id="210">
+      <mxCell style="folder;fillColor=#f9e2c3;fontColor=#FF9900;strokeColor=none;" parent="1" vertex="1">
+        <mxGeometry x="201" y="222" width="530" height="110" as="geometry" />
+      </mxCell>
+    </Folder>
+    <Folder name="Technology" Note="" Type="None" Solver="{&quot;enabled&quot;: false, &quot;algorithm&quot;: &quot;RK1&quot;, &quot;timeStep&quot;: 1}" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AgentBase="" id="207">
+      <mxCell style="folder;strokeColor=none;fillColor=#f0d6ff;fontColor=#993366;" parent="1" vertex="1">
+        <mxGeometry x="196" y="72" width="530" height="100" as="geometry" />
+      </mxCell>
+    </Folder>
+    <Variable name="CC" Note="CC is the carrying capacity per gha, used to calculate the limiting population" Equation="## ------------- Carrying capacity [CC] ---------------\n## CC is the sum of wild and domesticated components.\n## Carrying capacity is from wild and domesticated lands. But wild lands\n## ecosystem services limit the production from domesticated lands.\n## pH is the faction of Earth appropriated for human use.\npH &lt;- [Humansphere]/([Humansphere]+[Ecosphere])\n## pE is the fraction of Earth remaining wild.\npE &lt;- 1 - pH\n## This is the ecosphere component of CC, same as the ccE output variable.\n## This is an asymmetric sigmoid with inflection point at [a] in pE\ncce &lt;- 0.0\nIf (2*[a] &gt;= (1+pE)) Then\n    cce &lt;- 0.0\nElse\n    cce &lt;- pE^(0.5/(1+pE-2*[a]))\nEnd If\n#cce &lt;- [ccE]\n## This is the humansphere component of CC, same as the output variable ccH.\ncch &lt;-  pH*(1-exp([d]*[Knowledge]))\n## COMMENT-IN TO CARRY OUT THE WHAT-IF SCENARIO DESCRIBED IN FIGURE 8.\n#If (Unitless(Time()) &gt;= 1920 &amp;&amp; Unitless(Time()) &lt;=1980) Then\n#     x &lt;- Abs(Unitless(Time()) - 1950)/30.0\n#     cch &lt;- (x + (1 - x)*0.7)*cch\n#End If\ncc &lt;- ([b] + [c]*ccH)*ccE\nreturn cc\n" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="67">
+      <mxCell style="variable;fontStyle=1;fillColor=#FFFFFF;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="436" y="352" width="50" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Setting Note="" Version="36" TimeLength="2500" TimeStart="0" TimeStep="1" TimeUnits="Years" StrictUnits="true" StrictLinks="true" StrictAgentResolution="true" Units="" HiddenUIGroups="Validation,User Interface" SolutionAlgorithm="RK1" BackgroundColor="white" Throttle="-1" Macros="" SensitivityPrimitives="101" SensitivityRuns="20" SensitivityBounds="50, 80, 95, 100" SensitivityShowRuns="true" article="{&quot;comments&quot;:true,&quot;facebookUID&quot;:null}" StyleSheet="{}" unfolding="{&quot;text&quot;:&quot;Root Node&quot;,&quot;data&quot;:&quot;&quot;,&quot;type&quot;:&quot;root&quot;,&quot;leaf&quot;:false,&quot;expanded&quot;:true,&quot;children&quot;:[{&quot;text&quot;:&quot;Show Message&quot;,&quot;data&quot;:&quot;World 4 is a system dynamic model.&quot;,&quot;type&quot;:&quot;note&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]},{&quot;text&quot;:&quot;New Group&quot;,&quot;data&quot;:&quot;&quot;,&quot;type&quot;:&quot;group&quot;,&quot;leaf&quot;:false,&quot;expanded&quot;:true,&quot;children&quot;:[{&quot;text&quot;:&quot;Visibility Change&quot;,&quot;data&quot;:&quot;{\&quot;opacity\&quot;:13,\&quot;ids\&quot;:[]}&quot;,&quot;type&quot;:&quot;visibility&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]},{&quot;text&quot;:&quot;Visibility Change&quot;,&quot;data&quot;:&quot;{\&quot;opacity\&quot;:100,\&quot;ids\&quot;:[\&quot;55\&quot;,\&quot;56\&quot;]}&quot;,&quot;type&quot;:&quot;visibility&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]},{&quot;text&quot;:&quot;Show Message&quot;,&quot;data&quot;:&quot;The world is composed of the Humansphere, which is the mount of Earths biocapacity that is appropriated by humans.&quot;,&quot;type&quot;:&quot;note&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]}]},{&quot;text&quot;:&quot;Show Message&quot;,&quot;data&quot;:&quot;And the &lt;b&gt;Ecosphere&lt;/b&gt;, which is the amount of Earth&#39;s biocapacity that is not appropriated by humans.&quot;,&quot;type&quot;:&quot;note&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]},{&quot;text&quot;:&quot;spheres&quot;,&quot;data&quot;:&quot;&quot;,&quot;type&quot;:&quot;group&quot;,&quot;leaf&quot;:false,&quot;expanded&quot;:true,&quot;children&quot;:[{&quot;text&quot;:&quot;Show Message&quot;,&quot;data&quot;:&quot;Loss of &lt;b&gt;Humansphere&lt;/b&gt; is called &lt;b&gt;Rewilding&lt;/b&gt;, which is proportional to loss of population.&quot;,&quot;type&quot;:&quot;note&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]},{&quot;text&quot;:&quot;Visibility Change&quot;,&quot;data&quot;:&quot;{\&quot;opacity\&quot;:100,\&quot;ids\&quot;:[\&quot;59\&quot;,\&quot;66\&quot;]}&quot;,&quot;type&quot;:&quot;visibility&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]}]},{&quot;text&quot;:&quot;Show Message&quot;,&quot;data&quot;:&quot;Increase of the appropriated part of the environment is called &lt;b&gt;Domestication&lt;/b&gt; and is proportional to population growth.&quot;,&quot;type&quot;:&quot;note&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]},{&quot;text&quot;:&quot;technology&quot;,&quot;data&quot;:&quot;&quot;,&quot;type&quot;:&quot;group&quot;,&quot;leaf&quot;:false,&quot;expanded&quot;:true,&quot;children&quot;:[{&quot;text&quot;:&quot;Visibility Change&quot;,&quot;data&quot;:&quot;{\&quot;opacity\&quot;:16,\&quot;ids\&quot;:[]}&quot;,&quot;type&quot;:&quot;visibility&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]},{&quot;text&quot;:&quot;Visibility Change&quot;,&quot;data&quot;:&quot;{\&quot;opacity\&quot;:100,\&quot;ids\&quot;:[\&quot;57\&quot;,\&quot;58\&quot;,\&quot;60\&quot;,\&quot;68\&quot;]}&quot;,&quot;type&quot;:&quot;visibility&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]},{&quot;text&quot;:&quot;Show Message&quot;,&quot;data&quot;:&quot;Technology is a driver of increased life expectancy, which is related to the death rate. The death rate, called &lt;b&gt;Rewilding&lt;/b&gt;,is therefore a function of anti-knowledge, or &lt;b&gt;Ignorance&lt;/b&gt;.&quot;,&quot;type&quot;:&quot;note&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]}]},{&quot;text&quot;:&quot;Show Message&quot;,&quot;data&quot;:&quot;&lt;b&gt;Knowledge&lt;/b&gt; is a quantity that eliminates &lt;b&gt;Ignorance&lt;/b&gt;, therefore decreases the death rate (&lt;b&gt;Rewilding&lt;/b&gt;). &lt;b&gt;Knowledge&lt;/b&gt; grows intrinsically.&quot;,&quot;type&quot;:&quot;note&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]},{&quot;text&quot;:&quot;Show Message&quot;,&quot;data&quot;:&quot;The intrinsic growth of &lt;b&gt;Knowledge&lt;/b&gt; is called &lt;b&gt;Learning&lt;/b&gt;, which is proportional to &lt;b&gt;Knowledge&lt;/b&gt;. &lt;b&gt;Knowlege&lt;/b&gt; is lost when new mortailty arises due to &lt;b&gt;Ecosphere&lt;/b&gt; degradation. Loss of &lt;b&gt;Knowledge&lt;/b&gt; is called &lt;b&gt;Obsolescence&lt;/b&gt;.&quot;,&quot;type&quot;:&quot;note&quot;,&quot;leaf&quot;:true,&quot;expanded&quot;:false,&quot;children&quot;:[]}]}" unfoldingStatus="on" unfoldingAuto="non-editors" id="2">
+      <mxCell parent="1" vertex="1" visible="0">
+        <mxGeometry x="20" y="20" width="80" height="40" as="geometry" />
+      </mxCell>
+    </Setting>
+    <Stock name="Humansphere" Note="" InitialValue="#Long title: Land/sea domesticated by humans, in global hecatares of biocapacity.\n#Initial value for Humans is the area domesticated by the dominant human metapopulation at Year 0\n# 1.613e8 is from LS fit\n[Ho]" StockMode="Store" Delay="10" Volume="100" NonNegative="true" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="55">
+      <mxCell style="stock;fontStyle=1;fontSize=18;strokeWidth=4;30=40;" parent="1" vertex="1">
+        <mxGeometry x="560" y="262" width="149" height="40" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Stock name="Ecosphere" Note="" InitialValue="# ------------ The Ecosphere: stock value\n# Land/sea not domesticated by humans, in global hectares of biocapacity (gha).\n# For more on the definition of Ecosphere and the gha units, read the literature\n# about the ecological footprint (M. Wackernagel)\n# Starting value is a variable Eo that affects the population from 1970 on.\n[Eo]" StockMode="Store" Delay="10" Volume="100" NonNegative="true" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="56">
+      <mxCell style="stock;fontStyle=1;fontSize=18;strokeWidth=4;30=40;" parent="1" vertex="1">
+        <mxGeometry x="211" y="262" width="129" height="40" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Stock name="Ignorance" Note="Disease is the death rate due to predators and other environmental causes, but not starvation and other growth limited causes" InitialValue="#Long title: global human mortality rate from all causes except famine.\n#Disease includes predation, injury, violence, disease and all other causes of death\n#except death from starvation, which is modeled separately.\n[Io]" StockMode="Store" Delay="10" Volume="100" NonNegative="true" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="57">
+      <mxCell style="stock;fontStyle=1;fontSize=18;strokeWidth=4;30=40;" parent="1" vertex="1">
+        <mxGeometry x="206" y="102" width="124" height="40" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Stock name="Knowledge" Note="Technology is the cumulative eradication of death." InitialValue="# ------------ Knowledge: stock value\n# Amount of life-saving and efficiency-driving technology\n# Technology includes medicine, defensive weapons, shelter and all things that \n# improve life expectancy. Technology also drives improvements in food production,\n# therefore raises the carrying capacity.\n# The initial value for knowledge is Ko.\n# Units of knowledge ar 1/years. \n[Ko]" StockMode="Store" Delay="10" Volume="100" NonNegative="false" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" AllowNegatives="true" id="58">
+      <mxCell style="stock;fontStyle=1;fontSize=18;strokeWidth=4;30=40;" parent="1" vertex="1">
+        <mxGeometry x="569" y="107" width="132" height="40" as="geometry" />
+      </mxCell>
+    </Stock>
+    <Flow name="Domestication" Note="The Death rate depnds on Disease" FlowRate="# Domestication is the growth rate of Human expressed as land.\n# Domestication is prportional to Humans (simple exponenial) and subject to\n# the extraction model with respect to Nature. \nx &lt;- [g]*([Humansphere])   ## World 4.5\nreturn x" OnlyPositive="true" TimeIndependent="false" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="59" id="59">
+      <mxCell style="flow;fontSize=18;fillColor=#ffe0ab;labelBackgroundColor=#ffe0ab;fontStyle=1;strokeWidth=5;30=50;" parent="1" source="56" target="55" edge="1">
+        <mxGeometry x="10" y="-100" width="100" height="100" as="geometry">
+          <mxPoint x="28" y="222" as="sourcePoint" />
+          <mxPoint x="-72" y="322" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="448" y="302" />
+            <mxPoint x="398" y="167" />
+          </Array>
+          <mxPoint x="-30" y="-2" as="offset" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Flow name="Learning" Note="Eradication is the depletion of disease due to growth of Technology" FlowRate="# Ignorance goes down as Knowledge is developed.\n# k is an intrinsic rate, fit to pop data from 1000 - 1960.\nx &lt;- [Knowledge]*[κ]\nreturn x" OnlyPositive="true" TimeIndependent="false" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" id="60">
+      <mxCell style="flow;fontSize=18;fillColor=#f5d4f5;labelBackgroundColor=#f5d4f5;fontStyle=1;strokeWidth=5;30=50;" parent="1" source="57" target="58" edge="1">
+        <mxGeometry x="176" y="-43" width="100" height="100" as="geometry">
+          <mxPoint x="15" y="-48" as="sourcePoint" />
+          <mxPoint x="115" y="-148" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="445" y="107" />
+          </Array>
+          <mxPoint x="-71" as="offset" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Variable name="g" Note="G is the intrinsic growth rate, determined by curve fit." Equation="# Variable g is the domestication (birth) rate, which is composed of the intrinsic growth \n# rate plus the initial rewilding (death) rate. \n# Input variable [τ] is the doubling time in years in 1000CE.\n# At 1000bce this growth rate and the death (rewilding) rate add to D_0.\n# The term (1-exp([u]*[pE])) is the extraction model, approaching zero asymptotically as\n# [pE] approaches zero.\n# g is not a variable in the model, just an equation that combines 4 variables.\ng &lt;- [Io] + Ln(2.0)/[τ]   # initial birth rate is death rate + rate from initial doubling time\ng &lt;- g*(1-exp([u]*[pE]))   # larger negative u increases birth rate.\nw &lt;- [w]   ## begin to save Nature when it drops below w\nq &lt;- 1 \np &lt;- 1 - [p]\nx &lt;- Unitless(Time())\n## Keep pN above w by scaling back growth.\nIf ([pE] &lt; w) Then\n  ## attentuate g to degree p with phase in y\n  y &lt;- x - [sy]\n  If (y &lt;= 0.0) Then\n     q &lt;- 1.0\n  Else If (y &gt;= [py]) Then\n     q &lt;- p*(1-exp(-10*(w-[pE]))) + exp(-10*(w-[pE]))\n  Else \n     q &lt;- ((y/[py])*p+(1-y/[py]))*(1-exp(-10*(w-[pE]))) + exp(-10*(w-[pE]))\n  End If\n  g &lt;- g*q\nEnd If\nreturn g" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="0.05" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="62" id="62">
+      <mxCell style="variable;fontStyle=0;fontSize=18;fillColor=none;fontColor=#CC99FF;strokeColor=#CCFFFF;" parent="1" vertex="1">
+        <mxGeometry x="343.25" y="174.5" width="47" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Flow name="Rewilding" Note="The Death rate depnds on Disease" FlowRate="#Long title:  Rate of loss of homansphere (death of humans) as measured in gha of biocapacity.\n# This flow is proportional to Ignorance. \ndeath &lt;- [Ignorance]*[Humansphere]\nreturn death" OnlyPositive="true" TimeIndependent="false" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" oldId="59" id="66">
+      <mxCell style="flow;fontSize=18;fillColor=#ffeac1;labelBackgroundColor=#ffeac1;fontStyle=1;strokeWidth=5;30=50;" parent="1" source="55" target="56" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="333" y="442" as="sourcePoint" />
+          <mxPoint x="483" y="442" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="446" y="262" />
+            <mxPoint x="393" y="161" />
+          </Array>
+          <mxPoint x="40" as="offset" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Flow name="Obsolescence" Note="Emergence of new threats." FlowRate="## Long title: The re-emergence of high mortality as ecosystem services decline.\n# As Nature declines, the loss of ecosystem services introduces new threats and/or\n# makes current technology obselete, leading to new modes of mortality. \n# For example, climate change is a direct result \n# of the loss of the ecosystem service of climate stabilization. Climate change will\n# result in loss of carrying capacity, leading to social and economic pressures that \n# in turn lead to increased mortality. Emergence should be viewed as the\n# increased mortality due to technological obselesence. The technology for\n# food production will be obsolete in some areas as climate changes.\n# Emergence uses the variable r, which was fit to known technological increases in carrying capacity.\n# Higher r leads to steeper decline in Technology, and therefore in population.\nobsolescence &lt;- [r]*[Knowledge]\nreturn obsolescence" OnlyPositive="true" TimeIndependent="false" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" id="68">
+      <mxCell style="flow;fontSize=18;fillColor=#ffd5fc;labelBackgroundColor=#ffd5fc;fontStyle=1;strokeWidth=5;30=50;" parent="1" source="58" target="57" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="5" y="-298" as="sourcePoint" />
+          <mxPoint x="105" y="-398" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="435" y="142" />
+            <mxPoint x="491" />
+          </Array>
+          <mxPoint x="53" as="offset" />
+        </mxGeometry>
+      </mxCell>
+    </Flow>
+    <Link name="Link" Note="" BiDirectional="false" id="72">
+      <mxCell style="link;fontStyle=1;fontSize=18;strokeWidth=3;30=30;" parent="1" source="57" target="66" edge="1">
+        <mxGeometry x="45" y="32" width="100" height="100" as="geometry">
+          <mxPoint x="45" y="132" as="sourcePoint" />
+          <mxPoint x="145" y="32" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="310" y="192" />
+            <mxPoint x="440" y="232" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="74">
+      <mxCell style="link;fontStyle=1;fontSize=18;strokeColor=none;" parent="1" source="62" target="59" edge="1">
+        <mxGeometry x="-7" y="152" width="100" height="100" as="geometry">
+          <mxPoint x="-7" y="252" as="sourcePoint" />
+          <mxPoint x="93" y="152" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Io" Note="starting value for Ignorance" Equation="## [Io] = Base death rate = Ignorance of life-saving technology.\n## This variable is the initial value for the rate of mortality,\n## which is multiplied by [humansphere] to give its outflow [rewilding].\n## [rewilding] is proportional to deaths, all else being equal. \n## [Io] is not a sensitive variable. A wide range of values of [Io] allows\n## the data to be fit by adjusting other parameters. However, its\n## value determines the equilibrium population after 2100.\n## A higher value for [Io] means that the historical base death rate must have been high\n## and our equilibrium population will therefore be high. A low value for [Io] means\n## historical death rates were low and therefore the future equilibrium population\n## will be low.\n## --------- Explore this variable --------------\n## COMMENT-IN TO TRY RANDOM VALUES\n# x &lt;- Fix(Rand(0.02,0.5))\n## RAISE OR LOWER Io. RUN A SIMULATION. LOOK AT THE POPULATION IN 2200.\n#io &lt;- Fix(Rand(0.05,0.2))\n    io &lt;- 0.05\nreturn io" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="0.05" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="84">
+      <mxCell style="variable;fontStyle=1;fontSize=18;fillColor=#B3E2CD;" parent="1" vertex="1">
+        <mxGeometry x="318.25" y="447.75" width="64" height="42" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="85">
+      <mxCell style="link;fontStyle=1;fontSize=18;strokeColor=none;" parent="1" source="84" target="57" edge="1">
+        <mxGeometry x="-2" y="27" width="100" height="100" as="geometry">
+          <mxPoint x="-2" y="127" as="sourcePoint" />
+          <mxPoint x="98" y="27" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="280" y="52" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="logHumans" Note="" Equation="# output variable: log of predicted population\nLog([population]+1)" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="89">
+      <mxCell style="variable;fontColor=#FFFFFF;strokeColor=none;fillColor=none;fontStyle=1;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="730" y="472.75" width="78" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="population" Note="" Equation="# Output variable: human population.\n# As for a K-selected species, human population is determined by the carrying capacity [CC].\n# Read the work of Hopfenberg and Pimentel for more on this concept as applied to humanity.\n# This number assumes a constant requirement of resources per person,\n# but not a constant amount of land. CC expresses the efficiency in the use\n# of the humansphere.\n#\n# The implied outcome of a decreased carrying capacity [CC] is population decline by some means,\n# either starvation, war, or family planning.\n# This equation is a built-in assumption. \n#\n[Humansphere]*[CC]" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="101">
+      <mxCell style="variable;strokeColor=#FF0000;fillColor=#FFFFFF;fontColor=#333333;fontStyle=1;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="585" y="355" width="100" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="102">
+      <mxCell style="link;fontStyle=1;strokeColor=none;fontSize=18;strokeWidth=3;30=30;" parent="1" source="55" target="101" edge="1">
+        <mxGeometry x="3" y="-18" width="100" height="100" as="geometry">
+          <mxPoint x="3" y="82" as="sourcePoint" />
+          <mxPoint x="103" y="-18" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="660" y="322" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="103">
+      <mxCell style="link;fontStyle=1;strokeColor=#969696;fontSize=18;strokeWidth=3;30=30;" parent="1" source="67" target="101" edge="1">
+        <mxGeometry x="3" y="-18" width="100" height="100" as="geometry">
+          <mxPoint x="3" y="82" as="sourcePoint" />
+          <mxPoint x="103" y="-18" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="530" y="392" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="104">
+      <mxCell style="link;fontStyle=1;fontSize=18;strokeColor=none;" parent="1" source="101" target="89" edge="1">
+        <mxGeometry x="3" y="-18" width="100" height="100" as="geometry">
+          <mxPoint x="3" y="82" as="sourcePoint" />
+          <mxPoint x="103" y="-18" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Converter name="pop data" Note="" Source="Time" Data="0,170000000; 200,190000000; 400,190000000; 500,190000000; 600,200000000; 700,207000000; 800,220000000; 900,226000000; 1000,254000000; 1100,301000000; 1200,360000000; 1250,400000000; 1300,360000000; 1340,443000000; 1400,350000000; 1500,425000000; 1600,545000000; 1650,470000000; 1700,600000000; 1750,629000000; 1800,813000000; 1850,1128000000; 1900,1550000000; 1910,1750000000; 1920,1860000000; 1930,2070000000; 1940,2300000000; 1950,2400000000; 1960,3000000000; 1974,4000000000; 1987,5000000000; 1999,6000000000; 2011,7000000000; 2018,7600000000; 2024,8000000000; 2030,8500000000; 2045,9000000000; 2050,9100000000; 2060,9150000000; 2070,9050000000; 2080,8950000000; 2090,8800000000; 2100,8700000000" Interpolation="Linear" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="108">
+      <mxCell style="converter;fillColor=none;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="709" y="405" width="120" height="50" as="geometry" />
+      </mxCell>
+    </Converter>
+    <Link name="Link" Note="" BiDirectional="false" id="111">
+      <mxCell style="link;fontStyle=1;fontSize=18;fillColor=none;labelBackgroundColor=none;strokeColor=none;fontColor=#FFFFFF;" parent="1" source="108" target="110" edge="1">
+        <mxGeometry x="197" y="-256" width="100" height="100" as="geometry">
+          <mxPoint x="197" y="-156" as="sourcePoint" />
+          <mxPoint x="297" y="-256" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="116">
+      <mxCell style="link;fontStyle=1;fontSize=18;strokeColor=none;" parent="1" source="115" target="55" edge="1">
+        <mxGeometry x="-2.88" y="144.34" width="100" height="100" as="geometry">
+          <mxPoint x="-2.88" y="244.34" as="sourcePoint" />
+          <mxPoint x="97.12" y="144.34" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Eo" Note="" Equation="## ------------ Initial value for Ecosphere [Eo]\n## E0 is the total gha of biocapacity for the whole Earth.\n## E0 derived from ecological footprint literature is 1.2e10.\n## However, this value puts too much curvature in the late 20th century \n## population numbers, which have been rising at a roughly linear rate.\n## -----------------Explore this variable-------------------------\n## Lower N_0 leads to earlier collapse. Higher N_0 leads to higher, later collapse.\n## THIS IS THE OPTIMAL SETTING ACCORDING TO HYPERFIT\n#x &lt;- 0.705e10\n### COMMENT-IN TO EXPLORE DEPENDENCE ON Eo\n#x &lt;- Fix(Rand(0.420e10,0.440e10))\nx &lt;- 0.705e10\nreturn x" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="50000000000" SliderMin="20000000000" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="117">
+      <mxCell style="variable;fontStyle=1;fillColor=#FFFF99;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="318.25" y="630.75" width="60" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="118">
+      <mxCell style="link;fontStyle=1;fontSize=18;strokeWidth=3;30=30;strokeColor=none;" parent="1" source="117" target="56" edge="1">
+        <mxGeometry x="73" y="162" width="100" height="100" as="geometry">
+          <mxPoint x="73" y="262" as="sourcePoint" />
+          <mxPoint x="173" y="162" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="240" y="222" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="Ko" Note="" Equation="# [Ko] is the initial value for Knowledge in year 0CE \n# fit to population data from 1000-1970\n## Explore this variable----------------\n#7.25e-11\n7.25e-11" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="119">
+      <mxCell style="variable;fontStyle=1;fontSize=18;fillColor=#FDCDAC;" parent="1" vertex="1">
+        <mxGeometry x="319.25" y="508.75" width="64" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="120">
+      <mxCell style="link;fontStyle=1;fontSize=18;strokeColor=none;" parent="1" source="119" target="58" edge="1">
+        <mxGeometry x="-12" y="-63" width="100" height="100" as="geometry">
+          <mxPoint x="-12" y="37" as="sourcePoint" />
+          <mxPoint x="88" y="-63" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="pE" Note="" Equation="pe &lt;- [Ecosphere]/([Ecosphere]+[Humansphere])\n#pe &lt;- [Ecosphere]/[Eo]\nreturn pe" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="137" id="137">
+      <mxCell style="variable;fillColor=none;fontColor=#CC99FF;strokeColor=none;fontStyle=0;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="505" y="174.5" width="50" height="45" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="138">
+      <mxCell style="link;strokeColor=none;fontSize=18;" parent="1" source="56" target="137" edge="1">
+        <mxGeometry x="171" y="-90" width="100" height="100" as="geometry">
+          <mxPoint x="171" y="10" as="sourcePoint" />
+          <mxPoint x="271" y="-90" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="351" y="272" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="139">
+      <mxCell style="link;strokeColor=none;fontSize=18;" parent="1" source="55" target="137" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="581" y="342" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="142">
+      <mxCell style="link;fontSize=18;strokeColor=none;" parent="1" source="84" target="62" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="480" y="42" />
+            <mxPoint x="351" y="242" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="u" Note="dependence of birth on Nature" Equation="## HUMAN AGGRESSIVENESS in times of hardship\n## The variable u controls the rate of Domestication of wild land (Nature)\n## in the limit of zero wild land. \n# Larger negative u decreases Birth more as Nature approaches zero.\n## This variable affects only the outcome after collapse, since before collapse the \n## amount of Nature is never low enough to affect . \n## u = -10.6\n    u &lt;- -10.6\n#    u &lt;- Fix(Rand(-7.5,-6.0))\nreturn u" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="143" id="143">
+      <mxCell style="variable;fillColor=#FFFF99;fontStyle=1;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="536.75" y="590.5" width="56.5" height="29.5" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="v" Note="dependence of birth on Nature" Equation="# Variable v controls the degree to which depletion of Nature leads to the \n# emergence of now modes of mortality. But since Technology is used to\n# model both decrease in mortality and increase in carrying capacity\n# (food production), variable v also models the degree to which\n# loss of Nature affects carrying capacity. \n# v must be negative.\n# A large negative v means Technology is robust to the degradation of Nature and stays high\n# as Nature approaches zero. A small negative value for v means Technology is sensitive to \n# loss of Nature and declines more sharply as Nature declines. This variable provides\n# a means to explore scenarios.\n# -11.46\n\n#x &lt;- 10^Fix(Rand(1.0,2.5))\n#v &lt;- -1*x\nv &lt;- -11.46\n#v &lt;- Fix(Rand(-11.5,-10.5))\nreturn v" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="148" id="148">
+      <mxCell style="variable;fillColor=#FFFF99;fontStyle=1;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="535" y="643" width="60" height="32" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="a" Note="a is the inflection point in x=(%Nature) for collapse to zero carrying capacity" Equation="# RIVET POPPER model parameter -- a measure of ecosystem fragility.\n# The variable [a] is the inflection point in a sigmoid curve (equation [ccE]). Variable [a] can \n# adopt values 0&lt;[a]&lt;0.5, \n# [a]=0.33 places the current current value for [ecosphere] at 0.5 of maximum,\n# which is the estimated current global average\n# percapita carrying capacity, 1/2.1gha.\n# However, the variable [a] is strongly covarianct with the variable [Eo]. The best\n# setting for one depends on the setting for the other. It is weakly covariant with\n# variables v and u.\n## ----------- Explore this variable -------------------\n# EXPLORE THE DEPENDENCE ON a\n#    a &lt;- Fix(Rand(0.000,0.500))\n## THE OPTIMUM VALUE FOR a VARIES FROM 0.00 TO 0.45 DEPENDING ON OTHER VARIABLES\n## OPTIMUM VALUE CANNOT BE DETERMINED BASED ON PAST POPULATION DATA.\n#a &lt;- 0.427\na &lt;- 0.427\nreturn a\n\n" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="0.05" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="153" id="153">
+      <mxCell style="variable;fontStyle=1;fontSize=18;fillColor=#FFFF99;" parent="1" vertex="1">
+        <mxGeometry x="429.5" y="641.5" width="59" height="33" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="b" Note="b is the carrying capacity at 0 CE. Fit using population 1000-2000ce. " Equation="# b=1person/1.0gha is the ecosphere carrying capacity at 0 CE. Fit using population 1000-2000ce.\n#\n#b &lt;- Fix(Rand(0.5,1.5))\nb &lt;- 1.00\nreturn b" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="0.05" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="154" id="154">
+      <mxCell style="variable;fontStyle=1;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="430" y="590.5" width="60" height="29.5" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="c" Note=" c=0.2gha is the minimum percapita footprint for domesticated land under intense cultivation (gha)" Equation="# c=5.0 person/gha is the minimum reciprocal percapita footprint for \n# domesticated land under intense cultivation (gha)\n# fit to 27% increase in carrying capacity (=1/footprint) \n# observed from 9.6e9 gha in 1961 to 12.2e9 gha in 2014 (Lin et al, 2018) \n5.50\n" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="0.05" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="156" id="156">
+      <mxCell style="variable;fontStyle=1;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="429.5" y="532.75" width="60" height="35" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="d" Note="d=-300 is the negative log efficiency of Technology in raising carrying capacity. Larger negative leads to higher end-game value." Equation="# Efficiency of Knowledge in raising carrying capacity.\n# Larger negative leads to a higher end-game population. \n# Try values between -50 and -200\nd &lt;- -110.0\n#d &lt;- Fix(Rand(-200, -50))\nreturn d" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="0.05" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="157" id="157">
+      <mxCell style="variable;fontStyle=1;fontSize=18;fillColor=#FDCDAC;" parent="1" vertex="1">
+        <mxGeometry x="535.75" y="538" width="58.5" height="33" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="ccE" Note="" Equation="##--------------------------ccE----------------------------------\n# Carrying capacity contribution of the Ecosphere\n##--------------------------------------------------------------\n# xx is the fraction Nature\npE &lt;- [pE]\n## a is the inflection point in x for collapse to zero carrying capacity. 0.3&lt;a&lt;0.45\n## bb is the carrying capacity per gha for a healthy planet, 2000 years ago (people/gha). (fit)\n#bb &lt;- 1/[b]\ncce &lt;- 0.0\n## cce is the sigmoid function in xx of height bb, with inflection point at aa\nif (2*[a] &gt;= (1+pE)) Then\n    cce &lt;- 0.0\nElse\n    cce &lt;- [b]*pE^(0.5/(1+pE-2*[a]))\nEnd If\nreturn cce" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="165">
+      <mxCell style="variable;fillColor=none;strokeColor=#CCFFFF;fontColor=#CC99FF;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="585" y="179.5" width="50" height="35" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="ccH" Note="" Equation="# Long title: Carrying capacity of domesticated land in people / gha.\n##--------------------------ccH-----------------------------------\n# Human land provides carrying capacity  in proportion to ecosystem services, \n# which are proportional to Nature. Land yield increases with Technology.\n##---------------------------------------------------------------------\n# pH is the fraction land occupied by Humans\npH &lt;- 1-[pE]\n##---------------------------------------------------------------------\n## c is the maximum biocapacity of Humans land, fit to 27% increase in CC observed \n## from 1961 to 2014 (Lin et al, 2018) \n#cc &lt;- 1/[c] \n##---------------------------------------------------------------------\n## d is minus the log dependency of carrying capacity on Technology, fit to 20th century data.\n## Note that d must be a negative number.\ndd &lt;- [d]\n##----------------------------------------------------------------\n## ff is the conversion factor of Technology to carrying capacity per person\n## Carrying capacity of domesticated land /sea can be increased using technology. The \n## technology benefit is modeled here using the rule of diminishing returns.\n## As more technology is applied, the carrying capacity increases less and less, approaching\n## the value maximum value c. \ncch &lt;- (1-exp(dd*[Knowledge]))\n##----------------------------------------------------------------\n## Because ecosystem services are proportional to wild land/sea, and because the carrying capacity of\n## domesticated land depends on ecosystem services, ccH depends directly on ccN. ccN is the carrying\n## capacity of wild land/sea, measured as the number of people supported per gha.\n## This equation models persistent population and harm to the environment, including and especially,\n## persistent climate changes due to fossil fuel emmission. One example of \n## ecosystem services is the atmosphere&#39;s ability to absorb fossil fuel emmissions. \n#cch &lt;- pH*cch*[ccE]\ncch &lt;- [c]*pH*cch*[ccE]\n## In the 20th century, a period of high mortality occurs between\n## 1920 (Spanish flu, WW1) and 1950 (WW2), after which mortality drops\n## and carrying capacity rises (the green revolution, vaccines, etc.)\n## due to technology. \n#If (Unitless(Time()) &gt;= 1920 &amp;&amp; Unitless(Time()) &lt;=1980) Then\n #    x &lt;- Abs(Unitless(Time()) - 1950)/30.0\n #    cch &lt;- (x + (1 - x)*0.7)*cch\n#End If\nreturn cch" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="166">
+      <mxCell style="variable;fontColor=#CC99FF;strokeColor=none;fillColor=none;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="669" y="174.5" width="40" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="168">
+      <mxCell style="link;strokeColor=none;" parent="1" source="153" target="165" edge="1">
+        <mxGeometry x="181.91" y="-84.73" width="100" height="100" as="geometry">
+          <mxPoint x="181.91" y="15.27" as="sourcePoint" />
+          <mxPoint x="281.91" y="-84.73" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="169">
+      <mxCell style="link;strokeColor=none;dashed=1;" parent="1" source="154" target="165" edge="1">
+        <mxGeometry x="181" y="-73.03" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="26.97" as="sourcePoint" />
+          <mxPoint x="281" y="-73.03" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="170">
+      <mxCell style="link;strokeColor=#CCFFFF;fillColor=#C0C0C0;labelBackgroundColor=#C0C0C0;fontColor=#CC99FF;" parent="1" source="165" target="166" edge="1">
+        <mxGeometry x="153.5" y="-75.5" width="100" height="100" as="geometry">
+          <mxPoint x="153.5" y="24.5" as="sourcePoint" />
+          <mxPoint x="253.5" y="-75.5" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="462.5" y="184.5" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="171">
+      <mxCell style="link;strokeColor=none;" parent="1" source="67" target="166" edge="1">
+        <mxGeometry x="42" y="-87" width="100" height="100" as="geometry">
+          <mxPoint x="42" y="13" as="sourcePoint" />
+          <mxPoint x="142" y="-87" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="172">
+      <mxCell style="link;strokeColor=#CCFFFF;fontColor=#CC99FF;" parent="1" source="137" target="165" edge="1">
+        <mxGeometry x="146.5" y="-192.5" width="100" height="100" as="geometry">
+          <mxPoint x="146.5" y="-92.5" as="sourcePoint" />
+          <mxPoint x="246.5" y="-192.5" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="173">
+      <mxCell style="link;strokeColor=#CCFFFF;fontColor=#CC99FF;" parent="1" source="137" target="62" edge="1">
+        <mxGeometry x="127.5" y="-75.5" width="100" height="100" as="geometry">
+          <mxPoint x="127.5" y="24.5" as="sourcePoint" />
+          <mxPoint x="227.5" y="-75.5" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="174">
+      <mxCell style="link;strokeColor=none;" parent="1" source="143" target="62" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="r" Note="" Equation="## Equation r converts [v] and  [pE] to a rate of\n## obsolescence of Knowledge. The value for [v] was fit to \n## published data on carrying capacity increases due to technology\n## in the late 20th century.\n## r goes to zero as v goes more negative.\n## r increases as pN goes to zero\n## r increases less as v goes more negative. Less obsolescence. Higher tech.\nscale &lt;- 0.5\nr &lt;- scale*exp([v]*[pE])\nreturn r" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="175">
+      <mxCell style="variable;fontSize=18;fontStyle=0;fillColor=none;strokeColor=#CCFFFF;fontColor=#CC99FF;" parent="1" vertex="1">
+        <mxGeometry x="260" y="174.5" width="49" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="176">
+      <mxCell style="link;strokeColor=none;" parent="1" source="148" target="175" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="177">
+      <mxCell style="link;strokeColor=none;" parent="1" source="175" target="68" edge="1">
+        <mxGeometry x="180" y="-112" width="100" height="100" as="geometry">
+          <mxPoint x="180" y="-12" as="sourcePoint" />
+          <mxPoint x="280" y="-112" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="178">
+      <mxCell style="link;strokeColor=#CCFFFF;fontColor=#CC99FF;" parent="1" source="137" target="175" edge="1">
+        <mxGeometry x="116.5" y="-41" width="100" height="100" as="geometry">
+          <mxPoint x="116.5" y="59" as="sourcePoint" />
+          <mxPoint x="216.5" y="-41" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="301.5" y="224" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="181">
+      <mxCell style="link;strokeColor=#CCFFFF;fontColor=#CC99FF;" parent="1" source="165" target="166" edge="1">
+        <mxGeometry x="101.49" y="-80.52" width="100" height="100" as="geometry">
+          <mxPoint x="101.49" y="19.480000000000004" as="sourcePoint" />
+          <mxPoint x="201.49" y="-80.52" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="211.49" y="203.48000000000002" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="182">
+      <mxCell style="link;strokeColor=none;" parent="1" source="156" target="166" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="183">
+      <mxCell style="link;strokeColor=none;" parent="1" source="157" target="166" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="184">
+      <mxCell style="link;strokeColor=none;" parent="1" source="166" target="67" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="185">
+      <mxCell style="link;strokeColor=none;" parent="1" source="165" target="67" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="186">
+      <mxCell style="link;strokeColor=none;" parent="1" source="58" target="166" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="601" y="172" />
+            <mxPoint x="561" y="242" />
+            <mxPoint x="541" y="342" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="188">
+      <mxCell style="link;strokeColor=none;" parent="1" source="137" target="166" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="521" y="392" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="κ" Note="" Equation="## [kappa] is the base value for the rate of Technology growth in units of 1/years\n## kappa=0.007017 corresponds to a doubling time of t2 = ln(2)/0.007017 = 98.8 years\n## This number was found by multivariable fit.\n## EXPLORE THIS VARIABLE-----------\n# If you increase [kappa] then [knowledge] grows faster, therefore\n# hyperexponential growth overcomes exponential growth sooner.\n# [kappa] is correlated with [tau]. When optimized together, [tau] &lt;- 850\n# and [kappa] &lt;- 0.0096\n# Note that tau is in units of years, and kappa is in units of inverse years.\nkappa &lt;- 0.00958\nreturn kappa" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="189">
+      <mxCell style="variable;fontStyle=1;fontSize=24;fontFamily=Times New Roman;" parent="1" vertex="1">
+        <mxGeometry x="428.5" y="445" width="61.5" height="35" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="τ" Note="" Equation="# tt is the base doubling time of the [humansphere] in years in 1000CE. Set \n# based on multivariable fitting. \n# Explore this variable! ----------------\n# Increasing [tau] will slow the growth of [humansphere] and therefore delay \n# hyperexponential growth. Increasing [tau] will accelerate the arrival of \n# hyperexponential growth.\n# Look at the years 1700-1900. A high [tau]  &lt;- 1000, causes these population to decrease.\n# A low [tau] &lt;- 700 causes these populations to be too high.\n# [tau] correlates with [k]. When both are optimized together, [tau] &lt;- 850 is optimal.\ntau &lt;- 832\nreturn tau" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="191">
+      <mxCell style="variable;fontSize=18;fontStyle=1;fontFamily=Times New Roman;strokeColor=#003366;" parent="1" vertex="1">
+        <mxGeometry x="526" y="445" width="60" height="35" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="193">
+      <mxCell style="link;strokeColor=none;" parent="1" source="191" target="62" edge="1">
+        <mxGeometry x="181" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="181" y="22" as="sourcePoint" />
+          <mxPoint x="281" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="fit" Note="" Equation="x &lt;- [population]-[pop data]\nx &lt;- x/([population]+1)\nreturn x" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="198">
+      <mxCell style="variable;fillColor=none;strokeColor=none;fontColor=#FFFFFF;" parent="1" vertex="1">
+        <mxGeometry x="808" y="455.75" width="50" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="199">
+      <mxCell style="link;strokeColor=none;fillColor=#C0C0C0;labelBackgroundColor=#C0C0C0;" parent="1" source="57" target="198" edge="1">
+        <mxGeometry x="199" y="-79" width="100" height="100" as="geometry">
+          <mxPoint x="199" y="21" as="sourcePoint" />
+          <mxPoint x="419" y="561" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="200">
+      <mxCell style="link;strokeColor=none;" parent="1" source="62" target="198" edge="1">
+        <mxGeometry x="1129" y="-840" width="100" height="100" as="geometry">
+          <mxPoint x="1129" y="-740" as="sourcePoint" />
+          <mxPoint x="1229" y="-840" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="201">
+      <mxCell style="link;strokeColor=none;" parent="1" source="67" target="198" edge="1">
+        <mxGeometry x="294.29" y="43" width="100" height="100" as="geometry">
+          <mxPoint x="294.29" y="143" as="sourcePoint" />
+          <mxPoint x="394.29" y="43" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="204">
+      <mxCell style="link;strokeColor=none;fillColor=none;labelBackgroundColor=none;fontColor=#FFFFFF;" parent="1" source="108" target="198" edge="1">
+        <mxGeometry x="680" y="-116.25" width="100" height="100" as="geometry">
+          <mxPoint x="680" y="-16.25" as="sourcePoint" />
+          <mxPoint x="780" y="-116.25" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="206">
+      <mxCell style="link;strokeColor=none;" parent="1" source="101" target="198" edge="1">
+        <mxGeometry x="189" y="-77" width="100" height="100" as="geometry">
+          <mxPoint x="189" y="23" as="sourcePoint" />
+          <mxPoint x="289" y="-77" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="910" y="272" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="logData" Note="" Equation="## Output variable: log of population from UN predictive model by Lutz.\nLog([pop data]+1)" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="110">
+      <mxCell style="variable;fillColor=none;strokeColor=none;fontColor=#FFFFFF;fontStyle=1;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="744" y="222" width="59" height="50" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Variable name="Ho" Note="" Equation="## Starting value for domesticated land in 0CE. \n## Determined by leastsquares fit of early population data with an \n## assumed constant carrying capacity. In global hectares (gha).\n## 1.613e8\n## This variable cannot be accurately set based on historical estimates of population\n## in year 0CE because those numbers are uncertain. The value of H0 that optimizes the\n## fit to population data from 1000 to 1970 is roughly 1.5e8. But the optimum depends strongly\n## on the setting of [t], the hyper-exponential doubling time of technology. \n## Population data in years 1400-1700 depend on both of these variables. There this range of \n## years was used to find the 2-parameter optimum.\n## ------ Explore this variable --------\n## IF t=1525, THEN THE OPTIMUM VALUE FOR H0 IS 2.1E8\n#x &lt;- 2.1e8 \n## IF t=720, THEN THE OPTIMUM VALUE FOR H0 IS 1.1E8\n#x &lt;- 1.1e8 \nx &lt;- 0.150e9 \nreturn x\n" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="115">
+      <mxCell style="variable;fontStyle=1;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="316.75" y="571.63" width="64" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="211">
+      <mxCell style="link;strokeColor=none;" parent="1" source="189" target="60" edge="1">
+        <mxGeometry x="176" y="-43" width="100" height="100" as="geometry">
+          <mxPoint x="176" y="57" as="sourcePoint" />
+          <mxPoint x="276" y="-43" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="212">
+      <mxCell style="link;strokeWidth=3;30=30;" parent="1" source="58" target="67" edge="1">
+        <mxGeometry x="271" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="271" y="22" as="sourcePoint" />
+          <mxPoint x="531" y="482" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="620" y="172" />
+            <mxPoint x="530" y="242" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="213">
+      <mxCell style="link;strokeWidth=3;30=30;strokeColor=none;" parent="1" source="143" target="59" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="170" y="332" />
+            <mxPoint x="420" y="342" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Text name="World4" LabelPosition="Middle" id="214">
+      <mxCell style="text" parent="1" vertex="1">
+        <mxGeometry x="360" y="12" width="200" height="50" as="geometry" />
+      </mxCell>
+    </Text>
+    <Link name="Link" Note="" BiDirectional="false" id="216">
+      <mxCell style="link;strokeWidth=3;30=30;strokeColor=none;" parent="1" source="153" target="67" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="310" y="382" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="217">
+      <mxCell style="link;strokeWidth=3;30=30;strokeColor=none;" parent="1" source="148" target="68" edge="1">
+        <mxGeometry x="96" y="-83.06" width="100" height="100" as="geometry">
+          <mxPoint x="96" y="16.94" as="sourcePoint" />
+          <mxPoint x="196" y="-83.06" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="436" y="36.94" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="218">
+      <mxCell style="link;strokeWidth=3;30=30;" parent="1" source="55" target="67" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="580" y="332" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="219">
+      <mxCell style="link;strokeWidth=3;30=30;" parent="1" source="56" target="67" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="280" y="352" />
+            <mxPoint x="430" y="342" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="220">
+      <mxCell style="link;strokeColor=none;" parent="1" source="137" target="59" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="w" Note="Fraction of Nature to preserve" Equation="0.0\n\n" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="221" id="221">
+      <mxCell style="variable;fontSize=18;fontStyle=0;fillColor=#B3E2CD;strokeColor=#808080;" parent="1" vertex="1">
+        <mxGeometry x="635" y="452.75" width="62" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="222">
+      <mxCell style="link;strokeColor=none;" parent="1" source="221" target="59" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="p" Note="aggressiveness of saving of Nature" Equation="## p is the enforcement strength of conseration policy\n0.50" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="223">
+      <mxCell style="variable;fontSize=18;fillColor=#B3E2CD;strokeColor=#808080;" parent="1" vertex="1">
+        <mxGeometry x="635" y="510.5" width="60" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="224">
+      <mxCell style="link;strokeColor=none;" parent="1" source="223" target="59" edge="1">
+        <mxGeometry x="415.4" y="-134.18" width="100" height="100" as="geometry">
+          <mxPoint x="415.4" y="-34.18" as="sourcePoint" />
+          <mxPoint x="515.4" y="-134.18" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="225">
+      <mxCell style="link;strokeColor=none;" parent="1" source="221" target="62" edge="1">
+        <mxGeometry x="342.36" y="-215.37" width="100" height="100" as="geometry">
+          <mxPoint x="342.36" y="-115.37" as="sourcePoint" />
+          <mxPoint x="442.36" y="-215.37" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="226">
+      <mxCell style="link;strokeColor=none;" parent="1" source="223" target="62" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="pI" Note="fraction immortal" Equation="[Ignorance]/([Ignorance]+[Knowledge])" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="227">
+      <mxCell style="variable;strokeColor=none;fillColor=none;fontColor=#CC99FF;" parent="1" vertex="1">
+        <mxGeometry x="427.5" y="177" width="52.5" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="228">
+      <mxCell style="link;strokeColor=none;" parent="1" source="57" target="227" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="229">
+      <mxCell style="link;strokeColor=none;" parent="1" source="58" target="227" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="680" y="200" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="231">
+      <mxCell style="link;strokeColor=none;" parent="1" target="175" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="751" y="372" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="py" Note="ears delay in phasing in conservation" Equation="## y is the number of years to phase in w, non-BAU scenario\ny &lt;- 50.0\nreturn y" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" oldId="232" id="232">
+      <mxCell style="variable;fontSize=18;fontStyle=0;fillColor=#B3E2CD;strokeColor=#808080;" parent="1" vertex="1">
+        <mxGeometry x="635.5" y="634.25" width="60.5" height="33" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="233">
+      <mxCell style="link;strokeColor=none;" parent="1" source="232" target="62" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="234">
+      <mxCell style="link;strokeWidth=3;30=30;strokeColor=none;" parent="1" source="56" target="68" edge="1">
+        <mxGeometry x="100" y="-78" width="100" height="100" as="geometry">
+          <mxPoint x="100" y="22" as="sourcePoint" />
+          <mxPoint x="200" y="-78" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="310" y="222" />
+            <mxPoint x="440" y="162" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Display name="fit" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="" yAxis2="" showMarkers="false" showLines="true" showArea="false" ThreeDimensional="false" Primitives="198" Primitives2="101,108" AutoAddPrimitives="false" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" legendPosition="Automatic" xAxisMin="1920" xAxisMax="2010" yAxisMin="-0.4" yAxisMax="0.4" yAxisMax2="10000000000" id="196">
+      <mxCell style="display" parent="1" vertex="1" visible="0">
+        <mxGeometry x="10" y="10" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+    <Link name="Link" Note="" BiDirectional="false" id="236">
+      <mxCell style="link;strokeWidth=3;30=30;" parent="1" source="56" target="68" edge="1">
+        <mxGeometry x="10" y="-100" width="100" height="100" as="geometry">
+          <mxPoint x="10" as="sourcePoint" />
+          <mxPoint x="110" y="-100" as="targetPoint" />
+          <Array as="points">
+            <mxPoint x="300" y="220" />
+            <mxPoint x="430" y="180" />
+          </Array>
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="241">
+      <mxCell style="link;strokeColor=none;" parent="1" source="154" target="67" edge="1">
+        <mxGeometry x="150.3" y="-61.120000000000005" width="100" height="100" as="geometry">
+          <mxPoint x="150.3" y="38.879999999999995" as="sourcePoint" />
+          <mxPoint x="250.3" y="-61.120000000000005" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Variable name="sy" Note="" Equation="2020" Units="Unitless" MaxConstraintUsed="false" MinConstraintUsed="false" MaxConstraint="100" MinConstraint="0" ShowSlider="false" SliderMax="100" SliderMin="0" SliderStep="" Image="None" FlipHorizontal="false" FlipVertical="false" LabelPosition="Middle" id="242">
+      <mxCell style="variable;fillColor=#B3E2CD;strokeColor=#808080;fontColor=#333333;fontSize=18;" parent="1" vertex="1">
+        <mxGeometry x="636" y="572.75" width="60" height="40" as="geometry" />
+      </mxCell>
+    </Variable>
+    <Link name="Link" Note="" BiDirectional="false" id="243">
+      <mxCell style="link;strokeColor=none;" parent="1" source="242" target="62" edge="1">
+        <mxGeometry x="10" y="-100" width="100" height="100" as="geometry">
+          <mxPoint x="10" as="sourcePoint" />
+          <mxPoint x="110" y="-100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="244">
+      <mxCell style="link;strokeColor=none;" parent="1" source="156" target="67" edge="1">
+        <mxGeometry x="10" y="-100" width="100" height="100" as="geometry">
+          <mxPoint x="10" as="sourcePoint" />
+          <mxPoint x="110" y="-100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Link name="Link" Note="" BiDirectional="false" id="246">
+      <mxCell style="link;strokeColor=none;" parent="1" source="157" target="67" edge="1">
+        <mxGeometry x="-2.539999999999999" y="-115" width="100" height="100" as="geometry">
+          <mxPoint x="-2.539999999999999" y="-15" as="sourcePoint" />
+          <mxPoint x="97.46000000000001" y="-115" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Display name="CC" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="" yAxis2="" showMarkers="false" showLines="true" showArea="true" ThreeDimensional="false" Primitives="165,166,67" Primitives2="67" AutoAddPrimitives="false" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" legendPosition="Top" yAxisMin="0" yAxisMin2="0" yAxisMax="3" yAxisMax2="3" xAxisMin="1900" xAxisMax="2100" id="122">
+      <mxCell style="display" parent="1" vertex="1" visible="0">
+        <mxGeometry x="10" y="10" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+    <Text name="EQUATIONS" LabelPosition="Middle" id="247">
+      <mxCell style="text;fontSize=9;fontColor=#00FFFF;" parent="1" vertex="1">
+        <mxGeometry x="176" y="183" width="64" height="28" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="VARIABLES fit to years 1000-1970 " LabelPosition="Middle" oldId="248" id="248">
+      <mxCell style="text;fontSize=10;fontColor=#993300;fillColor=#FDCDAC;" parent="1" vertex="1">
+        <mxGeometry x="220" y="535.75" width="69.5" height="50" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="VARIABLES fit to years 1970-2010" LabelPosition="Middle" oldId="249" id="249">
+      <mxCell style="text;fontSize=9;fontColor=#808000;fillColor=#FFFF99;" parent="1" vertex="1">
+        <mxGeometry x="220" y="633" width="60" height="50" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="outputs" LabelPosition="Middle" id="258">
+      <mxCell style="text;fontSize=12;" parent="1" vertex="1">
+        <mxGeometry x="294.25" y="367.5" width="91.5" height="25" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="ignorance" LabelPosition="Middle" oldId="259" id="259">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="320.25" y="485.75" width="60" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="knowledge" LabelPosition="Middle" oldId="260" id="260">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="316.75" y="548.75" width="60" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="humansphere" LabelPosition="Middle" oldId="261" id="261">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="318.75" y="610.75" width="60" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="ecosphere" LabelPosition="Middle" oldId="262" id="262">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="318.75" y="667.75" width="60" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="knowledge" LabelPosition="Middle" oldId="263" id="263">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="425.75" y="476" width="60" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="humansphere" LabelPosition="Middle" oldId="264" id="264">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="526" y="476" width="60" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="humansphere" LabelPosition="Middle" oldId="265" id="265">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="430" y="567.75" width="60" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="ecosphere" LabelPosition="Middle" oldId="266" id="266">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="429" y="617" width="60" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="fragility" LabelPosition="Middle" oldId="267" id="267">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="428.5" y="672" width="60" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="ecosphere-&gt;domestication" LabelPosition="Middle" oldId="268" id="268">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="472.5" y="620" width="190" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="knowledge-&gt;CC" LabelPosition="Middle" oldId="269" id="269">
+      <mxCell style="text;fontSize=9;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="534.25" y="567.75" width="65.75" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="ecosphere-&gt;obsolescence" LabelPosition="Middle" oldId="270" id="270">
+      <mxCell style="text;fontSize=10;fontStyle=0" parent="1" vertex="1">
+        <mxGeometry x="472.5" y="672" width="190" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="conservation policy" LabelPosition="Middle" oldId="271" id="271">
+      <mxCell style="text;fontSize=9;fontStyle=0;fontColor=#008000;" parent="1" vertex="1">
+        <mxGeometry x="601" y="494" width="130" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="policy strength" LabelPosition="Middle" oldId="272" id="272">
+      <mxCell style="text;fontSize=9;fontStyle=0;fontColor=#008000;strokeColor=none;" parent="1" vertex="1">
+        <mxGeometry x="633.13" y="550.5" width="65.75" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="policy start" LabelPosition="Middle" oldId="273" id="273">
+      <mxCell style="text;fontSize=9;fontStyle=0;fontColor=#008000;strokeColor=none;" parent="1" vertex="1">
+        <mxGeometry x="630" y="609.75" width="65.75" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="policy phase-in" LabelPosition="Middle" oldId="274" id="274">
+      <mxCell style="text;fontSize=9;fontStyle=0;fontColor=#008000;" parent="1" vertex="1">
+        <mxGeometry x="633.13" y="665" width="65.75" height="18" as="geometry" />
+      </mxCell>
+    </Text>
+    <Text name="VARIABLES not fittable" LabelPosition="Middle" oldId="275" id="275">
+      <mxCell style="text;fontSize=10;fontColor=#008000;fillColor=#B3E2CD;" parent="1" vertex="1">
+        <mxGeometry x="220" y="420" width="69.5" height="50" as="geometry" />
+      </mxCell>
+    </Text>
+    <Link name="Link" Note="" BiDirectional="false" id="276">
+      <mxCell style="link;strokeColor=none;" parent="1" source="117" target="137" edge="1">
+        <mxGeometry width="100" height="100" as="geometry">
+          <mxPoint y="100" as="sourcePoint" />
+          <mxPoint x="100" as="targetPoint" />
+        </mxGeometry>
+      </mxCell>
+    </Link>
+    <Display name="New Display" Note="" Type="Time Series" xAxis="Time (%u)" yAxis="" yAxis2="" showMarkers="false" showLines="true" showArea="false" ThreeDimensional="false" Primitives="56,55" Primitives2="" AutoAddPrimitives="false" ScatterplotOrder="X Primitive, Y Primitive" Image="Display" FlipHorizontal="false" FlipVertical="false" LabelPosition="Bottom" legendPosition="Automatic" xAxisMin="1960" xAxisMax="2010" id="277">
+      <mxCell style="display" parent="1" vertex="1" visible="0">
+        <mxGeometry x="10" y="10" width="64" height="64" as="geometry" />
+      </mxCell>
+    </Display>
+  </root>
+</InsightMakerModel>
